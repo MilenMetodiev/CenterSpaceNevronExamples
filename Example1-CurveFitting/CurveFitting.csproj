@@ -31,26 +31,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Nevron.Chart, Version=10.1.21.12, Culture=neutral, PublicKeyToken=2961c51bb98125d2, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files\Nevron Software\Nevron .NET Vision 2010.1 for VS2008\Bin\Nevron.Chart.dll</HintPath>
-    </Reference>
-    <Reference Include="Nevron.Chart.WinForm, Version=10.1.21.12, Culture=neutral, PublicKeyToken=c9bd8998e981e4ee, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files\Nevron Software\Nevron .NET Vision 2010.1 for VS2008\Bin\Nevron.Chart.WinForm.dll</HintPath>
-    </Reference>
-    <Reference Include="Nevron.GraphicsGL, Version=10.1.21.12, Culture=neutral, PublicKeyToken=2f17c6a71f852d32, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files\Nevron Software\Nevron .NET Vision 2010.1 for VS2008\Bin\Nevron.GraphicsGL.dll</HintPath>
-    </Reference>
-    <Reference Include="Nevron.Presentation, Version=10.1.21.12, Culture=neutral, PublicKeyToken=6656c5d1103e75cc, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files\Nevron Software\Nevron .NET Vision 2010.1 for VS2008\Bin\Nevron.Presentation.dll</HintPath>
-    </Reference>
-    <Reference Include="Nevron.System, Version=10.1.21.12, Culture=neutral, PublicKeyToken=6a987feae5e496fd, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files\Nevron Software\Nevron .NET Vision 2010.1 for VS2008\Bin\Nevron.System.dll</HintPath>
-    </Reference>
+    <Reference Include="Nevron.Chart, Version=10.7.29.12, Culture=neutral, PublicKeyToken=2961c51bb98125d2, processorArchitecture=MSIL" />
+    <Reference Include="Nevron.Chart.WinForm, Version=10.7.29.12, Culture=neutral, PublicKeyToken=c9bd8998e981e4ee, processorArchitecture=MSIL" />
+    <Reference Include="Nevron.GraphicsGL, Version=10.7.29.12, Culture=neutral, PublicKeyToken=2f17c6a71f852d32, processorArchitecture=MSIL" />
+    <Reference Include="Nevron.Presentation, Version=10.7.29.12, Culture=neutral, PublicKeyToken=6656c5d1103e75cc, processorArchitecture=MSIL" />
+    <Reference Include="Nevron.System, Version=10.7.29.12, Culture=neutral, PublicKeyToken=6a987feae5e496fd, processorArchitecture=MSIL" />
     <Reference Include="NMath, Version=4.0.0.0, Culture=neutral, PublicKeyToken=873235918a322639, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\NMathAssemblies\NMath.dll</HintPath>

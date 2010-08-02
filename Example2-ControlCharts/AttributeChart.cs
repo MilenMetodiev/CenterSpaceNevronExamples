@@ -126,7 +126,7 @@ namespace ControlChartsExample
 					outlierPoints.Values.Add(statValue);
 				}
 			}
-
+			
 			//
 			// Set up the statistic line series
 			//
@@ -137,8 +137,6 @@ namespace ControlChartsExample
 			line.InflateMargins = true;
 			line.DataLabelStyle.Visible = false;
 			line.BorderStyle = new NStrokeStyle(1.6f, Color.Tomato);
-
-			line.DisplayOnAxis(StandardAxis.SecondaryY, true);
 			
 			// Set up the marker style for the regular points
 			line.MarkerStyle.Visible = true;
@@ -171,22 +169,10 @@ namespace ControlChartsExample
 			//
 			if (stats.ConstControlLimits)
 			{
-				if (stats.UCL.Length > 0)
-				{
-					double uclValue = stats.UCL[0];
+				bool showLCL = (stats.LCL.Length > 0);
+				bool showUCL = (stats.UCL.Length > 0);
 
-					// Set up the UCL const line
-					NAxisConstLine ucl = new NAxisConstLine();
-					ucl.Value = uclValue;
-					ucl.StrokeStyle = new NStrokeStyle(1.0f, Color.Gray, LinePattern.Dash);
-					ucl.ShowAtWalls = new ChartWallType[] { ChartWallType.Back };
-					chart.Axis(StandardAxis.PrimaryY).ConstLines.Add(ucl);
-
-					// Show UCL label
-					SetValueLabel(chart, uclValue, "UCL", true);
-				}
-
-				if (stats.LCL.Length > 0)
+				if (showLCL)
 				{
 					double lclValue = stats.LCL[0];
 
@@ -201,22 +187,48 @@ namespace ControlChartsExample
 					SetValueLabel(chart, lclValue, "LCL", true);
 				}
 
-				// Make sure that the UCL and LCL values are displayed on the scale
+				if (showUCL)
+				{
+					double uclValue = stats.UCL[0];
 
-/*				chart.Axis(StandardAxis.PrimaryY).UpdateScale();
+					// Set up the UCL const line
+					NAxisConstLine ucl = new NAxisConstLine();
+					ucl.Value = uclValue;
+					ucl.StrokeStyle = new NStrokeStyle(1.0f, Color.Gray, LinePattern.Dash);
+					ucl.ShowAtWalls = new ChartWallType[] { ChartWallType.Back };
+					chart.Axis(StandardAxis.PrimaryY).ConstLines.Add(ucl);
+
+					// Show UCL label
+					SetValueLabel(chart, uclValue, "UCL", true);
+				}
+
+				// Ensure that the UCL and LCL values are visible
+				NRange1DD clRange = new NRange1DD();
+
+				if (showLCL && showUCL)
+				{
+					clRange.Begin = stats.LCL[0];
+					clRange.End = stats.UCL[0];
+				}
+				else if (showLCL)
+				{
+					clRange.End = clRange.Begin = stats.LCL[0];
+				}
+				else if (showUCL)
+				{
+					clRange.End = clRange.Begin = stats.UCL[0];
+				}
+
+				clRange.Inflate(0.5);
+
+				chart.Axis(StandardAxis.PrimaryY).UpdateScale();
 				chart.Axis(StandardAxis.PrimaryY).SynchronizeScaleWithConfigurator = false;
 
 				// custom tick inflator
-				NCustomTickRangeInflator inflator = new NCustomTickRangeInflator(new double[] { lclValue-0.5, uclValue+0.5 });
+				NCustomRangeInflator inflator = new NCustomRangeInflator(new NRange1DD[] { clRange });
 				inflator.InflateBegin = true;
 				inflator.InflateEnd = true;
-				chart.Axis(StandardAxis.PrimaryY).Scale.ContentRangeInflators.Add(inflator);*/
-
-				// FIX: Just a test, Remove ///////////
-		//		NPointSeries aaa = new NPointSeries();
-		//		chart.Series.Add(aaa);
-		//		aaa.Values.AddRange(new double[] { -8, -10 });
-				///////////////////
+				chart.Axis(StandardAxis.PrimaryY).Scale.ContentRangeInflators.Add(inflator);
 			}
 			else
 			{
@@ -299,6 +311,16 @@ namespace ControlChartsExample
 			NAxis axisY2 = chart.Axis(StandardAxis.SecondaryY);
 			NAxis axisX = chart.Axis(StandardAxis.PrimaryX);
 
+			NLinearScaleConfigurator scaleX = new NLinearScaleConfigurator();
+			scaleX.MajorGridStyle.LineStyle.Pattern = LinePattern.Dash;
+			scaleX.MajorGridStyle.ShowAtWalls = new ChartWallType[] { ChartWallType.Back };
+			scaleX.InnerMajorTickStyle.Visible = false;
+			scaleX.Title.Text = "Group";
+			scaleX.Title.TextStyle.FontStyle = new NFontStyle("Arial", 9, FontStyle.Bold);
+			scaleX.ViewRangeInflateMode = ScaleViewRangeInflateMode.Logical;
+			scaleX.LogicalInflate = new NRange1DD(0.5, 0.5);
+			axisX.ScaleConfigurator = scaleX;
+
 			NLinearScaleConfigurator scaleY = new NLinearScaleConfigurator();
 			scaleY.MajorGridStyle.LineStyle.Pattern = LinePattern.Dash;
 			scaleY.MajorGridStyle.ShowAtWalls = new ChartWallType[] { ChartWallType.Back };
@@ -315,13 +337,8 @@ namespace ControlChartsExample
 			axisY2.ScaleConfigurator = scaleY2;
 			axisY2.Visible = true;
 
-			NLinearScaleConfigurator scaleX = new NLinearScaleConfigurator();
-			scaleX.MajorGridStyle.LineStyle.Pattern = LinePattern.Dash;
-			scaleX.MajorGridStyle.ShowAtWalls = new ChartWallType[] { ChartWallType.Back };
-			scaleX.InnerMajorTickStyle.Visible = false;
-			scaleX.Title.Text = "Group";
-			scaleX.Title.TextStyle.FontStyle = new NFontStyle("Arial", 9, FontStyle.Bold);
-			axisX.ScaleConfigurator = scaleX;
+			// the scale of the secodary Y axis must be the same as the primary Y axis scale
+			axisY1.Slaves.Add(axisY2);
 		}
 
 		/// <summary>
