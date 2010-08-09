@@ -36,9 +36,9 @@
     <Reference Include="Nevron.GraphicsGL, Version=10.7.29.12, Culture=neutral, PublicKeyToken=2f17c6a71f852d32, processorArchitecture=MSIL" />
     <Reference Include="Nevron.Presentation, Version=10.7.29.12, Culture=neutral, PublicKeyToken=6656c5d1103e75cc, processorArchitecture=MSIL" />
     <Reference Include="Nevron.System, Version=10.7.29.12, Culture=neutral, PublicKeyToken=6a987feae5e496fd, processorArchitecture=MSIL" />
-    <Reference Include="NMath, Version=4.0.0.0, Culture=neutral, PublicKeyToken=873235918a322639, processorArchitecture=MSIL" />
-    <Reference Include="NMathShared, Version=4.0.0.0, Culture=neutral, PublicKeyToken=873235918a322639, processorArchitecture=MSIL" />
-    <Reference Include="NMathStats, Version=3.1.0.0, Culture=neutral, PublicKeyToken=873235918a322639, processorArchitecture=MSIL" />
+    <Reference Include="NMath, Version=4.1.0.0, Culture=neutral, PublicKeyToken=873235918a322639, processorArchitecture=MSIL" />
+    <Reference Include="NMathShared, Version=4.1.0.0, Culture=neutral, PublicKeyToken=873235918a322639, processorArchitecture=MSIL" />
+    <Reference Include="NMathStats, Version=3.2.0.0, Culture=neutral, PublicKeyToken=873235918a322639, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
