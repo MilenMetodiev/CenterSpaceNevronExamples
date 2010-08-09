@@ -19,8 +19,14 @@ namespace ControlChartEngine
 		/// <summary>
 		/// Creates statistics for the c-chart
 		/// </summary>
-		/// <param name="defects">Count of defect / nonconformity  per-sample period</param>
-		public Stats_c(DoubleVector Defects, int Stds, Double TimeStart, Double TimeInterval, String TimeAxisLabel, String StatisticsLabel)
+		/// <param name="defects">Count of defect / nonconformity per-sample period</param>
+    /// <param name="Stds">Number of standard deviations, either 1, 2, or 3 to use for control limits</param>
+    /// <param name="ChartTitle">Title of chart.</param>
+    /// <param name="TimeStart">The start time of the data.</param>
+    /// <param name="TimeInterval">Time interval between each sample group.</param>
+    /// <param name="TimeAxisLabel">Horizontal axis label.</param>
+    /// <param name="StatisticsLabel">Vertical axis label.</param>
+    public Stats_c(DoubleVector Defects, int Stds, String ChartTitle, Double TimeStart, Double TimeInterval, String TimeAxisLabel, String StatisticsLabel)
 		{
 			if (Stds == 1 || Stds == 2 || Stds == 3)
 			{
@@ -28,7 +34,12 @@ namespace ControlChartEngine
 
 				this.ConstControlLimits = true;
 				this.UCL = new DoubleVector(Defects.Length, this.CenterLine + Stds * Math.Sqrt(this.CenterLine));
-				this.LCL = new DoubleVector(Defects.Length, 0);
+
+        if(this.CenterLine - Stds * Math.Sqrt(this.CenterLine) > 0)
+          this.LCL = new DoubleVector(Defects.Length, this.CenterLine - Stds * Math.Sqrt(this.CenterLine));
+        else
+          this.LCL = new DoubleVector(Defects.Length, 0);
+        
 				this.Statistic = Defects;
 
 				this.TimeStart = TimeStart;
@@ -36,7 +47,7 @@ namespace ControlChartEngine
 				this.TimeLabel = TimeAxisLabel;
 				this.DefectLabel = StatisticsLabel;
 
-				this.ChartTitle = "c Chart";
+        this.ChartTitle = ChartTitle;
 
 			}
 			else
@@ -51,8 +62,9 @@ namespace ControlChartEngine
 		/// </summary>
 		/// <param name="defects">Count of defect / nonconformity  per-sample period</param>
 		/// <param name="stds">Number of standard deviations, either 1, 2, or 3.</param>
-		public Stats_c(DoubleVector Defects, int Stds)
-			: this(Defects, Stds, 1, 1, "Group", "Group Summary Statistics")
+    /// <param name="ChartTitle">Title of chart.</param>
+		public Stats_c(DoubleVector Defects, int Stds, String ChartTitle)
+			: this(Defects, Stds, ChartTitle, 1, 1, "Group", "Group Summary Statistics")
 		{
 			;
 		}
@@ -62,7 +74,7 @@ namespace ControlChartEngine
 		/// </summary>
 		/// <param name="defects">Count of defect / nonconformity  per-sample period</param>
 		public Stats_c(DoubleVector Defects)
-			: this(Defects, 3)
+			: this(Defects, 3, "c-Chart")
 		{
 			;
 		}

@@ -30,7 +30,13 @@ namespace ControlChartsExample
 		private void nButtonCChart_Click(object sender, EventArgs e)
 		{
 			// c-Chart sample data
-			IAttributeChartStats stats_c = new Stats_c(new CenterSpace.NMath.Core.DoubleVector(1, 2, 12, 3, 2, 1, 2, 3, 2, 5, 4, 0, -3));
+      // This data-set was copied from the 'pcmanufact' data set packaged with the R qcc package by Luca Scrucca
+      //
+      // Example Data Description
+      // A personal computer manufacturer counts the number of nonconformities per unit on the final
+      // assembly line. He collects data on 20 samples of 5 computers each.
+      DoubleVector defects = new DoubleVector(10, 12,  8, 14, 10, 16, 11,  7, 10, 15,  9,  5,  7, 11, 12,  6,  8, 10,  7,  5);
+      IAttributeChartStats stats_c = new Stats_c(defects, 3, "c-Chart pcmanufact dataset");
 
 			// build the Nevron c-Chart visualization
 			this.nQualityControlChart.AutoRefresh = true;
