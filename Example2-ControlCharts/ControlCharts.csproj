@@ -56,6 +56,7 @@
     <Compile Include="AttributeChart.cs">
     </Compile>
     <Compile Include="ControlChartEngine\IAttributeChartStats.cs" />
+    <Compile Include="ControlChartEngine\Stats-np.cs" />
     <Compile Include="ControlChartEngine\Stats_p.cs" />
     <Compile Include="ControlChartEngine\Stats_u.cs" />
     <Compile Include="MainForm.cs">

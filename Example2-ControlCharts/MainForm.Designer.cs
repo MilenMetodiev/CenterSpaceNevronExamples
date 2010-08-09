@@ -42,17 +42,20 @@
       this.pictureBoxCenterSpace = new System.Windows.Forms.PictureBox();
       this.nRichDescription = new Nevron.UI.WinForm.Controls.NRichTextBox();
       this.nButtonPChart = new System.Windows.Forms.Button();
+      this.nButtonNPChart = new System.Windows.Forms.Button();
+      this.groupBox1 = new System.Windows.Forms.GroupBox();
       this.panelNevron.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNevron)).BeginInit();
       this.panelCenterSpace.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCenterSpace)).BeginInit();
+      this.groupBox1.SuspendLayout();
       this.SuspendLayout();
       // 
       // nButtonUChart
       // 
-      this.nButtonUChart.Location = new System.Drawing.Point(12, 48);
+      this.nButtonUChart.Location = new System.Drawing.Point(15, 63);
       this.nButtonUChart.Name = "nButtonUChart";
-      this.nButtonUChart.Size = new System.Drawing.Size(143, 30);
+      this.nButtonUChart.Size = new System.Drawing.Size(110, 30);
       this.nButtonUChart.TabIndex = 1;
       this.nButtonUChart.Text = "u Chart";
       this.nButtonUChart.UseVisualStyleBackColor = false;
@@ -60,9 +63,9 @@
       // 
       // nButtonCChart
       // 
-      this.nButtonCChart.Location = new System.Drawing.Point(12, 12);
+      this.nButtonCChart.Location = new System.Drawing.Point(15, 27);
       this.nButtonCChart.Name = "nButtonCChart";
-      this.nButtonCChart.Size = new System.Drawing.Size(143, 30);
+      this.nButtonCChart.Size = new System.Drawing.Size(110, 30);
       this.nButtonCChart.TabIndex = 0;
       this.nButtonCChart.Text = "c Chart";
       this.nButtonCChart.UseVisualStyleBackColor = false;
@@ -197,26 +200,47 @@
       // 
       // nButtonPChart
       // 
-      this.nButtonPChart.Location = new System.Drawing.Point(12, 84);
+      this.nButtonPChart.Location = new System.Drawing.Point(15, 99);
       this.nButtonPChart.Name = "nButtonPChart";
-      this.nButtonPChart.Size = new System.Drawing.Size(143, 30);
+      this.nButtonPChart.Size = new System.Drawing.Size(110, 30);
       this.nButtonPChart.TabIndex = 6;
       this.nButtonPChart.Text = "p Chart";
       this.nButtonPChart.UseVisualStyleBackColor = false;
       this.nButtonPChart.Click += new System.EventHandler(this.nButtonPChart_Click);
+      // 
+      // nButtonNPChart
+      // 
+      this.nButtonNPChart.Location = new System.Drawing.Point(15, 135);
+      this.nButtonNPChart.Name = "nButtonNPChart";
+      this.nButtonNPChart.Size = new System.Drawing.Size(110, 30);
+      this.nButtonNPChart.TabIndex = 7;
+      this.nButtonNPChart.Text = "np Chart";
+      this.nButtonNPChart.UseVisualStyleBackColor = false;
+      this.nButtonNPChart.Click += new System.EventHandler(this.nButtonNPChart_Click);
+      // 
+      // groupBox1
+      // 
+      this.groupBox1.Controls.Add(this.nButtonNPChart);
+      this.groupBox1.Controls.Add(this.nButtonCChart);
+      this.groupBox1.Controls.Add(this.nButtonPChart);
+      this.groupBox1.Controls.Add(this.nButtonUChart);
+      this.groupBox1.Location = new System.Drawing.Point(12, 12);
+      this.groupBox1.Name = "groupBox1";
+      this.groupBox1.Size = new System.Drawing.Size(143, 186);
+      this.groupBox1.TabIndex = 8;
+      this.groupBox1.TabStop = false;
+      this.groupBox1.Text = "Attribute Charts";
       // 
       // MainForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(792, 573);
-      this.Controls.Add(this.nButtonPChart);
+      this.Controls.Add(this.groupBox1);
       this.Controls.Add(this.panelNevron);
       this.Controls.Add(this.panelCenterSpace);
       this.Controls.Add(this.nRichDescription);
       this.Controls.Add(this.nQualityControlChart);
-      this.Controls.Add(this.nButtonUChart);
-      this.Controls.Add(this.nButtonCChart);
       this.MinimumSize = new System.Drawing.Size(800, 600);
       this.Name = "MainForm";
       this.Text = "Control Charts";
@@ -227,6 +251,7 @@
       this.panelCenterSpace.ResumeLayout(false);
       this.panelCenterSpace.PerformLayout();
       ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCenterSpace)).EndInit();
+      this.groupBox1.ResumeLayout(false);
       this.ResumeLayout(false);
 
     }
@@ -246,6 +271,8 @@
 	private System.Windows.Forms.Label labelCenterSpace;
 	private System.Windows.Forms.PictureBox pictureBoxCenterSpace;
   private System.Windows.Forms.Button nButtonPChart;
+  private System.Windows.Forms.Button nButtonNPChart;
+  private System.Windows.Forms.GroupBox groupBox1;
 	
   }
 }

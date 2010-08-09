@@ -48,7 +48,7 @@ namespace ControlChartEngine
 							this.LCL[i] = 0;
 					}
 
-					this.Statistic = DefectCountInSample / SampleSizes; ;
+					this.Statistic = DefectCountInSample / SampleSizes;
 
 					this.TimeStart = TimeStart;
 					this.TimeSampleInterval = TimeInterval;
