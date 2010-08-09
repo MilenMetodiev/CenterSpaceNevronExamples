@@ -27,8 +27,6 @@ namespace ControlChartsExample
 		/// <summary>
 		/// Example c-Chart
 		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
 		private void nButtonCChart_Click(object sender, EventArgs e)
 		{
 			// c-Chart sample data
@@ -44,8 +42,6 @@ namespace ControlChartsExample
 		/// <summary>
 		/// Example u-Chart
 		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
 		private void nButtonUChart_Click(object sender, EventArgs e)
 		{
 			// u-Chart sample data
@@ -63,9 +59,40 @@ namespace ControlChartsExample
 			// build the Nevron u-Chart visualization
 			this.nQualityControlChart.AutoRefresh = true;
 			this.nQualityControlChart.Clear();
-			AttributeChart cChart = new AttributeChart(stats_u, this.nQualityControlChart);
+			AttributeChart uChart = new AttributeChart(stats_u, this.nQualityControlChart);
 
 		}
+
+    /// <summary>
+    /// Example p-Chart
+    /// </summary>
+    private void nButtonPChart_Click(object sender, EventArgs e)
+    {
+      // p-Chart sample data
+      // This data-set was copied from the 'orangejuice' data set packaged with the R qcc package by Luca Scrucca
+      //
+      // Example Data Description
+      // Frozen orange juice concentrate is packed in 6-oz cardboard cans. These cans are formed on a
+      // inspected to determine whether, when filled, the liquid could possible leak either on the side seam or
+      // around the bottom joint. If this occurs a can is considered nonconforming. The data were collected
+      // as 30 samples of 50 cans each at half-hour intervals over a three-shift period in which the machine
+      // was in continuous operation. From sample 15 used a new batch of cardboard stock was put into  
+      // production. Sample 23 was obtained when an inexperienced operator was temporarily assigned to
+      // the machine. After the first 30 samples, a machine adjustment was made. Then further 24 samples
+      // were taken from the process.
+      //    failuresPerSample number of failures per 50 cans of orange juice (inspection units)
+      //    samplesize number of inspection units in roll (variable sample size
+      DoubleVector failuresPerSample = new DoubleVector(12, 15,  8, 10,  4,  7, 16,  9, 14, 10,  5,  6, 17, 12, 22,  8, 10,  5, 13, 11, 20, 18, 24, 15,  9, 12,  7, 13,  9,  6);
+      DoubleVector samplesize = new DoubleVector( 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50 ,50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50);
+      IAttributeChartStats stats_p = new Stats_p(failuresPerSample, samplesize, 3, "p-Chart OrangeJuice data", 0, 30, "Group sample each 30 minutes (minutes)", "Group Summary Statistics");
+
+      // build the Nevron p-Chart visualization
+      this.nQualityControlChart.AutoRefresh = true;
+      this.nQualityControlChart.Clear();
+      AttributeChart pChart = new AttributeChart(stats_p, this.nQualityControlChart);
+
+    }
+
 
 		private void linkLabelCenterSpace_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{

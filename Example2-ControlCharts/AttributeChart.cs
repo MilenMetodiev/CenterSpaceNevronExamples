@@ -88,7 +88,7 @@ namespace ControlChartsExample
 					new NLength(6, NRelativeUnit.ParentPercentage),
 					new NLength(6, NRelativeUnit.ParentPercentage));
 
-			SetupChartAxes(chart);
+			SetupChartAxes(chart, stats);
 
 			//
 			// First set up a point series for the outliers so it's on-top in z-order.
@@ -304,8 +304,9 @@ namespace ControlChartsExample
 		/// <summary>
 		/// Configures the axis
 		/// </summary>
-		/// <param name="chart"></param>
-		void SetupChartAxes(NChart chart)
+		/// <param name="chart">Nevron chart</param>
+    /// <param name="stats">Chart stats, and configuration details.</param>
+    void SetupChartAxes(NChart chart, IAttributeChartStats stats)
 		{
 			NAxis axisY1 = chart.Axis(StandardAxis.PrimaryY);
 			NAxis axisY2 = chart.Axis(StandardAxis.SecondaryY);
@@ -315,7 +316,7 @@ namespace ControlChartsExample
 			scaleX.MajorGridStyle.LineStyle.Pattern = LinePattern.Dash;
 			scaleX.MajorGridStyle.ShowAtWalls = new ChartWallType[] { ChartWallType.Back };
 			scaleX.InnerMajorTickStyle.Visible = false;
-			scaleX.Title.Text = "Group";
+      scaleX.Title.Text = stats.TimeLabel;
 			scaleX.Title.TextStyle.FontStyle = new NFontStyle("Arial", 9, FontStyle.Bold);
 			scaleX.ViewRangeInflateMode = ScaleViewRangeInflateMode.Logical;
 			scaleX.LogicalInflate = new NRange1DD(0.5, 0.5);
@@ -325,7 +326,7 @@ namespace ControlChartsExample
 			scaleY.MajorGridStyle.LineStyle.Pattern = LinePattern.Dash;
 			scaleY.MajorGridStyle.ShowAtWalls = new ChartWallType[] { ChartWallType.Back };
 			scaleY.InnerMajorTickStyle.Visible = false;
-			scaleY.Title.Text = "Group Summary Statistics";
+      scaleY.Title.Text = stats.DefectLabel;
 			scaleY.Title.TextStyle.FontStyle = new NFontStyle("Arial", 9, FontStyle.Bold);
 			axisY1.ScaleConfigurator = scaleY;
 
