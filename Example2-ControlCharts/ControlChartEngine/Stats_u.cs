@@ -19,7 +19,14 @@ namespace ControlChartEngine
 		/// Creates statistics for the u-chart
 		/// </summary>
 		/// <param name="defects">Count of defect / nonconformity  per-sample period</param>
-		public Stats_u(DoubleVector Defects, DoubleVector SampleSizes, int Stds, Double TimeStart, Double TimeInterval, String TimeAxisLabel, String StatisticsLabel)
+    /// <param name="SampleSizes">Vector of variable sample sizes.</param>
+    /// <param name="Stds">Number of standard deviations, either 1, 2, or 3 to use for control limits</param>
+    /// <param name="ChartTitle">Title of chart.</param>
+    /// <param name="TimeStart">The start time of the data.</param>
+    /// <param name="TimeInterval">Time interval between each sample group.</param>
+    /// <param name="TimeAxisLabel">Horizontal axis label.</param>
+    /// <param name="StatisticsLabel">Vertical axis label.</param>
+		public Stats_u(DoubleVector Defects, DoubleVector SampleSizes, int Stds, String ChartTitle, Double TimeStart, Double TimeInterval, String TimeAxisLabel, String StatisticsLabel)
 		{
 			if (Stds == 1 || Stds == 2 || Stds == 3)
 			{
@@ -44,7 +51,7 @@ namespace ControlChartEngine
 					this.TimeLabel = TimeAxisLabel;
 					this.DefectLabel = StatisticsLabel;
 
-					this.ChartTitle = "u Chart";
+          this.ChartTitle = ChartTitle;
 				}
 				else
 				{
@@ -63,8 +70,8 @@ namespace ControlChartEngine
 		/// </summary>
 		/// <param name="defects">Count of defect / nonconformity  per-sample period</param>
 		/// <param name="stds">Number of standard deviations, either 1, 2, or 3.</param>
-		public Stats_u(DoubleVector Defects, DoubleVector SampleSizes, int Stds)
-			: this(Defects, SampleSizes, Stds, 1, 1, "Group", "Group Summary Statistics")
+		public Stats_u(DoubleVector Defects, DoubleVector SampleSizes, int Stds, String ChartTitle)
+			: this(Defects, SampleSizes, Stds, ChartTitle, 1, 1, "Group", "Group Summary Statistics")
 		{
 			;
 		}
@@ -74,7 +81,7 @@ namespace ControlChartEngine
 		/// </summary>
 		/// <param name="defects">Count of defect / nonconformity  per-sample period</param>
 		public Stats_u(DoubleVector Defects, DoubleVector SampleSizes)
-			: this(Defects, SampleSizes, 3)
+			: this(Defects, SampleSizes, 3, "u-Chart")
 		{
 			;
 		}

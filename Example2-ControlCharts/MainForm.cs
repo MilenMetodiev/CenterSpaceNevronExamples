@@ -54,7 +54,7 @@ namespace ControlChartsExample
 			//    samplesize number of inspection units in roll (variable sample size
 			DoubleVector x = new DoubleVector(14, 12, 20, 11, 7, 10, 21, 16, 19, 23);
 			DoubleVector samplesize = new DoubleVector(10.0, 8.0, 13.0, 10.0, 9.5, 10.0, 12.0, 10.5, 12.0, 12.5);
-			IAttributeChartStats stats_u = new Stats_u(x, samplesize);
+			IAttributeChartStats stats_u = new Stats_u(x, samplesize, 3, "u-Chart, dyedcloth dataset");
 
 			// build the Nevron u-Chart visualization
 			this.nQualityControlChart.AutoRefresh = true;
@@ -84,7 +84,7 @@ namespace ControlChartsExample
       //    samplesize number of inspection units in roll (variable sample size
       DoubleVector failuresPerSample = new DoubleVector(12, 15,  8, 10,  4,  7, 16,  9, 14, 10,  5,  6, 17, 12, 22,  8, 10,  5, 13, 11, 20, 18, 24, 15,  9, 12,  7, 13,  9,  6);
       DoubleVector samplesize = new DoubleVector( 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50 ,50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50);
-      IAttributeChartStats stats_p = new Stats_p(failuresPerSample, samplesize, 3, "p-Chart OrangeJuice data", 0, 30, "Group sample every 30 minutes (minutes)", "Group Summary Statistics");
+      IAttributeChartStats stats_p = new Stats_p(failuresPerSample, samplesize, 3, "p-Chart OrangeJuice dataset", 0, 30, "Group sample every 30 minutes (minutes)", "Group Summary Statistics");
 
       // build the Nevron p-Chart visualization
       this.nQualityControlChart.AutoRefresh = true;
@@ -114,7 +114,7 @@ namespace ControlChartsExample
       //    samplesize number of inspection units in roll (variable sample size
       DoubleVector failuresPerSample = new DoubleVector(12, 15, 8, 10, 4, 7, 16, 9, 14, 10, 5, 6, 17, 12, 22, 8, 10, 5, 13, 11, 20, 18, 24, 15, 9, 12, 7, 13, 9, 6);
       int samplesize = 50;
-      IAttributeChartStats stats_np = new Stats_np(failuresPerSample, samplesize, 3, "np-Chart OrangeJuice data", 0, 30, "Group sample every 30 minutes (minutes)", "Group Summary Statistics");
+      IAttributeChartStats stats_np = new Stats_np(failuresPerSample, samplesize, 3, "np-Chart OrangeJuice dataset", 0, 30, "Group sample every 30 minutes (minutes)", "Group Summary Statistics");
 
       // build the Nevron p-Chart visualization
       this.nQualityControlChart.AutoRefresh = true;
