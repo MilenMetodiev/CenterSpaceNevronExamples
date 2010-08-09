@@ -21,7 +21,7 @@ namespace ControlChartsExample
 
 		private void MainForm_Load(object sender, EventArgs e)
 		{
-			nButtonCChart_Click(null, null);
+			nButtonUChart_Click(null, null);
 		}
 
 		/// <summary>
@@ -43,6 +43,8 @@ namespace ControlChartsExample
 			this.nQualityControlChart.Clear();
 			AttributeChart cChart = new AttributeChart(stats_c, this.nQualityControlChart);
 
+      // Update description in UI
+      this.nRichDescription.Text = "The c-Chart, or Count Chart, is an attribute control chart for monitoring the total number of nonconformities per subgroup over time.  The size of each measured subgroup must be constant.";
 		}
 
 		/// <summary>
@@ -67,6 +69,8 @@ namespace ControlChartsExample
 			this.nQualityControlChart.Clear();
 			AttributeChart uChart = new AttributeChart(stats_u, this.nQualityControlChart);
 
+      // Update description in UI
+      this.nRichDescription.Text = "The u-Chart, or Unit Chart, is an attribute control chart for monitoring the frequency of nonconformities per subgroup over time, with a possibly varying subgroup size.";
 		}
 
     /// <summary>
@@ -97,6 +101,9 @@ namespace ControlChartsExample
       this.nQualityControlChart.Clear();
       AttributeChart pChart = new AttributeChart(stats_p, this.nQualityControlChart);
 
+      // Update description in UI
+      this.nRichDescription.Text = "The p-Chart, or Percentage Chart, is an attribute control chart for monitoring the proportion of nonconformities per subgroup over time, with a possibly varying subgroup size.";
+
     }
 
     /// <summary>
@@ -126,6 +133,9 @@ namespace ControlChartsExample
       this.nQualityControlChart.AutoRefresh = true;
       this.nQualityControlChart.Clear();
       AttributeChart npChart = new AttributeChart(stats_np, this.nQualityControlChart);
+
+      // Update description in UI
+      this.nRichDescription.Text = "The np-Chart is an attribute control chart for monitoring the number of nonconformities per subgroup over time.  The size of each measured subgroup must be constant.";
 
     }
 
